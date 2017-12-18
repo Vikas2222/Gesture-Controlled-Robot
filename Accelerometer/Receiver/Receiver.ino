@@ -1,16 +1,25 @@
 
+#include <Servo.h>
+
 int F=3, B=4, R=5, L=6;
 char command=0;
-int pulse_time=10;
+int pulse_time=10, cam_angle = 90;
+
+Servo cam_servo;
 
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
 
+  cam_servo.attach(9);
+
   pinMode(F, OUTPUT);
   pinMode(B, OUTPUT);
   pinMode(R, OUTPUT);
   pinMode(L, OUTPUT);
+
+  cam_servo.write(cam_angle);
+  delay(1000);
 }
 
 void loop() {
@@ -38,6 +47,23 @@ void loop() {
        delay(pulse_time);
        digitalWrite(L, LOW);
     break;
+
+    case 'f':
+      cam_angle -= 2;
+    break;
+    case 'b':
+      cam_angle += 2;
+    break;
   }
+
+  cam_servo.write(cam_angle);
+
+ if(cam_angle < 0){
+  cam_angle = 0;
+ }
+ if(cam_angle > 180){
+  cam_angle = 180;
+ }
+ 
   
 }
