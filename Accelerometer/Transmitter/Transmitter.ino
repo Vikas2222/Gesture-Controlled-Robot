@@ -58,5 +58,5 @@ void loop() {
   sprintf(buffer, "%d  %d  %d  %d\n", X_val, Y_val, X_th, Y_th);
 //  Serial.print(buffer);
 
-  delay(100);
+  delay(15+60);
 }

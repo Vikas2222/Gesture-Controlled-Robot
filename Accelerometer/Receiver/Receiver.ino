@@ -1,9 +1,9 @@
 
 #include <Servo.h>
 
-int F=3, B=4, R=5, L=6;
+int F=2, B=3, R=4, L=5;
 char command=0;
-int pulse_time=10, cam_angle = 90;
+int pulse_time=50, cam_angle = 90;
 
 Servo cam_servo;
 
@@ -11,7 +11,7 @@ void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
 
-  cam_servo.attach(9);
+  cam_servo.attach(6);
 
   pinMode(F, OUTPUT);
   pinMode(B, OUTPUT);
